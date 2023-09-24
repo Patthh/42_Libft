@@ -6,9 +6,11 @@
 /*   By: pracksaw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 18:02:15 by pracksaw          #+#    #+#             */
-/*   Updated: 2023/09/01 03:26:58 by pracksaw         ###   ########.fr       */
+/*   Updated: 2023/09/24 13:19:58 by pracksaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	blank(const char *s, int *ptr_i)
 {
