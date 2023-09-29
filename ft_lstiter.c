@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pracksaw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 12:46:28 by pracksaw          #+#    #+#             */
-/*   Updated: 2023/09/27 15:57:42 by pracksaw         ###   ########.fr       */
+/*   Created: 2023/09/28 16:31:36 by pracksaw          #+#    #+#             */
+/*   Updated: 2023/09/28 18:35:05 by pracksaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t number, size_t size)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	size_t	total_size;
-	void	*ptr;
-
-	total_size = number * size;
-	ptr = malloc(total_size);
-	if (number == SIZE_MAX || size == SIZE_MAX)
-		return (NULL);
-	if (ptr != NULL)
-		ft_memset(ptr, 0, total_size);
-	return (ptr);
+	(void)f;
+	if (!lst || !f)
+		return ;
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }
+/*
+#include "stdio.h"
+void	pc(void *content)
+{
+	printf("Contain : %s\n",(char *)content);
+}
+int	main(void)
+{
+t_list *lst = ft_lstnew("Hell");
+ft_lstadd_back(&lst, ft_lstnew("World We livin' in"));
+ft_lstiter(lst, pc);
+}
+*/

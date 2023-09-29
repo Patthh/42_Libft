@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pracksaw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 12:46:28 by pracksaw          #+#    #+#             */
-/*   Updated: 2023/09/27 15:57:42 by pracksaw         ###   ########.fr       */
+/*   Created: 2023/09/27 15:19:17 by pracksaw          #+#    #+#             */
+/*   Updated: 2023/09/28 18:40:04 by pracksaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t number, size_t size)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t	total_size;
-	void	*ptr;
-
-	total_size = number * size;
-	ptr = malloc(total_size);
-	if (number == SIZE_MAX || size == SIZE_MAX)
-		return (NULL);
-	if (ptr != NULL)
-		ft_memset(ptr, 0, total_size);
-	return (ptr);
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }
