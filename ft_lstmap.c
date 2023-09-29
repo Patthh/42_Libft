@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pracksaw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 15:59:12 by pracksaw          #+#    #+#             */
-/*   Updated: 2023/09/29 17:55:32 by pracksaw         ###   ########.fr       */
+/*   Created: 2023/09/29 16:59:32 by pracksaw          #+#    #+#             */
+/*   Updated: 2023/09/29 17:45:20 by pracksaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (!lst)
+	t_list	*ret;
+	t_list	*tmp;
+
+	if (!lst || !f || !del)
 		return (NULL);
-	while (lst->next)
+	ret = 0;
+	while (lst)
+	{
+		tmp = ft_lstnew(f(lst->content));
+		if (!tmp)
+		{
+			ft_lstclear(&ret, del);
+			return (0);
+		}
+		ft_lstadd_back(&ret, tmp);
 		lst = lst->next;
-	return (lst);
+	}
+	return (ret);
 }

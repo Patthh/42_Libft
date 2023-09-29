@@ -6,7 +6,7 @@
 /*   By: pracksaw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:46:45 by pracksaw          #+#    #+#             */
-/*   Updated: 2023/09/29 16:51:28 by pracksaw         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:55:22 by pracksaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,4 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	(del)((*lst)->content);
 	free(*lst);
 	(*lst) = NULL;
-} 
+}
